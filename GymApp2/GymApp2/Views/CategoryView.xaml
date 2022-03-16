@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:GymApp.Helpers"
+             xmlns:nb="clr-namespace:GymApp.Views"
+             xmlns:model="clr-namespace:GymApp.Model"
+             x:Class="GymApp.Views.CategoryView">
+
+    <ContentPage.BindingContext>
+        <model:Exercises/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="2" BackgroundColor="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <CollectionView ItemsSource="{Binding Items}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                    x:Name="SomeCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Frame Grid.Row="0"
+                                               CornerRadius="12"
+                                               Padding="0">
+                                            <Image Source="{Binding ImageURL}"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalOptions="FillAndExpand"/>
+                                        </Frame>
+                                        
+
+
+
+                                            <!--<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Description}" FontSize="15" FontAttributes="Bold"/>
+                                            <Image Grid.Row="2" Grid.Column="1" Source="Start"
+                                                   HorizontalOptions="Start" WidthRequest="20"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Margin="30,0,0,0" FontSize="15"
+                                                   VerticalOptions="Start"/>-->
+                                    </Grid>
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Button Text="Count" 
+                                                FontSize="35"
+                                                Grid.Row="0"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="EndAndExpand"
+                                                Clicked="Button_Clicked"/>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                        
+                    </CollectionView>
+
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms.Core;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace GymApp.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Profile : ContentView
+    {
+        public Profile()
+        {
+            InitializeComponent();
+            //im.Source = ImageSource.FromResource("GymApp.welcomeBackFon.jpg");
+        }
+        
+    }
+}
