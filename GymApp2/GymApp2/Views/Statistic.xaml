@@ -11,9 +11,9 @@
 
     <ContentView.Content>
         <StackLayout>
+            <Label Text="{Binding Score}" TextColor="AliceBlue" HorizontalOptions="Center" BackgroundColor="Salmon" FontSize="Body" VerticalOptions="Start"/>
             <views:HorizontalCalendarControl SelectedDateCommand="{Binding SelectedDateCommand}" SelectedDateBackGroundColor="AliceBlue" BackgroundColor="AliceBlue" x:Name="calendarControl"/>
             <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Start" Text="{Binding Source={x:Reference calendarControl},Path=SelectedDate}" />
-            <Label Text="{Binding dateTime}"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

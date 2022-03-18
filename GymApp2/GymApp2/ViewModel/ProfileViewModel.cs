@@ -1,6 +1,7 @@
 ﻿using Firebase.Database;
 using GymApp.Model;
 using GymApp.ViewModels;
+using GymApp2.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,8 +80,20 @@ namespace GymApp2.ViewModel
 
 
         }
+        int score;
+        public int Score
+        {
+            set
+            {
+                this.score = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this.score;
+            }
+        }
 
- 
         public Command User { get; set; }
         public ProfileViewModel()
         {
@@ -96,6 +109,12 @@ namespace GymApp2.ViewModel
             Age = user.Object.Age;
             Weight = user.Object.Weight;
             Height = user.Object.Height;
+            var training = (await client.Child("Training").OnceAsync<Training>()).Where(u => u.Object.IdUser == key).ToList();
+            Score = 0;
+            foreach (var list in training)
+            {
+                Score += list.Object.Scores;
+            }
             return user.Object;
         }
     }
